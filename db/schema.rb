@@ -11,7 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914000822) do
+ActiveRecord::Schema.define(version: 20150919083329) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parents", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "occupation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parents_students", id: false, force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "parent_id"
+  end
+
+  add_index "parents_students", ["parent_id"], name: "index_parents_students_on_parent_id"
+  add_index "parents_students", ["student_id", "parent_id"], name: "index_parents_students_on_student_id_and_parent_id"
+  add_index "parents_students", ["student_id"], name: "index_parents_students_on_student_id"
+
+  create_table "students", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "grade"
+    t.string   "home_phone_number"
+    t.string   "cell_phone_number"
+    t.string   "email"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "students", ["address_id"], name: "index_students_on_address_id"
+  add_index "students", ["user_id"], name: "index_students_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
