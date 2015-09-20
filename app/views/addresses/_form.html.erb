@@ -1,0 +1,18 @@
+<%= f_user.fields_for(user.student.address) do |f_address| %>
+  <div class="field">
+    <%= f_address.label :street %><br>
+    <%= f_address.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f_address.label :city %><br>
+    <%= f_address.password_field :city %>
+  </div>
+  <div class="field">
+    <%= f_address.label :state %><br>
+    <%= f_address.password_field :state %>
+  </div>
+  <div class="field">
+    <%= f_address.label :zip %><br>
+    <%= f_address.password_field :zip %>
+  </div>
+<% end %>

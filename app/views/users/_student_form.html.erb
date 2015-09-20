@@ -1,0 +1,39 @@
+<h2>Student Information</h2>
+
+<%= f.fields_for :student do |f_student| %>
+
+  <div class="field">
+    <%= f_student.label :first_name %><br>
+    <%= f_student.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f_student.label :last_name %><br>
+    <%= f_student.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f_student.label :grade %><br>
+    <%= f_student.text_field :grade %>
+  </div>
+
+  <div class="field">
+    <%= f_student.label :home_phone_number %><br>
+    <%= f_student.text_field :home_phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f_student.label :cell_phone_number %><br>
+    <%= f_student.text_field :cell_phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f_student.label :email %><br>
+    <%= f_student.text_field :email %>
+  </div>
+
+  <%= render partial: 'parent_form', locals: { f: f_student } %>
+
+  <%= render partial: 'address_form', locals: { f: f_student } %>
+
+<% end %>

@@ -1,0 +1,16 @@
+<h2>Parent Information</h2>
+
+<%= f.fields_for :parents do |f_parent| %>
+  <div class="field">
+    <%= f_parent.label :first_name %><br>
+    <%= f_parent.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f_parent.label :last_name %><br>
+    <%= f_parent.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f_parent.label :occupation %><br>
+    <%= f_parent.text_field :occupation %>
+  </div>
+<% end %>

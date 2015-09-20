@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  address_id: 
-  parent_id: 
+  user_id: user_id1
+  address_id: address_id1
   first_name: MyString
   last_name: MyString
   grade: MyString
@@ -12,9 +11,8 @@ one:
   email: MyString
 
 two:
-  user_id: 
-  address_id: 
-  parent_id: 
+  user_id: user_id2
+  address_id: address_id2
   first_name: MyString
   last_name: MyString
   grade: MyString

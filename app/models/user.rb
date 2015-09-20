@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
 	has_one :student
 
-	validates :name, presence: true, uniqueness: true
-  has_secure_password
+  validates :name, presence: true, uniqueness: true
+  
+  accepts_nested_attributes_for :student
 
   after_destroy :ensure_a_user_remains
+  has_secure_password
 
   private
 
