@@ -2,3 +2,22 @@
 
 <p>Welcome!</p>
 
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">Course Number</th>
+      <th colspan="1">Course Name</th>
+      <th colspan="1">Final Grade</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.course.course_number %></td>
+        <td><%= enrollment.course.name %></td>
+        <td><%= enrollment.grade.nil? ? "In progress" : enrollment.grade %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
