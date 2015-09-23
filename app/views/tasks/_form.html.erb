@@ -1,0 +1,49 @@
+<%= form_for @task, html: {class: 'form-detail'} do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :category %><br>
+    <%= f.select :category, @categories, {}, {class: 'form-control'}  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :is_submitted %><br>
+    <%= f.check_box :is_submitted %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :score %><br>
+    <%= f.text_field :score, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :max_score %><br>
+    <%= f.text_field :max_score, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :grade %><br>
+    <%= f.select :grade, @grades, {}, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :enrollment_id, value: @enrollment.id %>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-default' %>
+  </div>
+<% end %>

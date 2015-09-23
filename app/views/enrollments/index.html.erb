@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Enrollments</h1>
+<h1>Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="1">Course Number</th>
-      <th colspan="1">Course Name</th>
-      <th colspan="1">Course Description</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
+<div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= course.course_number %></td>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%= button_to 'Add Course', enrollments_path(course_id: course), method: :post, remote: true %></td>
+        <th colspan="1">Course Number</th>
+        <th colspan="1">Course Name</th>
+        <th colspan="1">Course Description</th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
 
-</table>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.course_number %></td>
+          <td><%= course.name %></td>
+          <td><%= course.description %></td>
+          <td><%= button_to 'Add Course', enrollments_path(course_id: course), class: 'btn btn-default', method: :post, remote: true %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>
 
 <div id="current_enrollments">
   <%= render 'enrollments', enrollments: @enrollments %>

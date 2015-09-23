@@ -2,7 +2,44 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= render 'form' %>
+<%= form_for @user, url: {action: "update"}, html: {class: 'form-signup'} do |f_user| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Back', @user %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>Account Information</h2>
+
+  <div class="form-group">
+    <%= f_user.label :name %><br>
+    <%= f_user.text_field :name, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f_user.label :password %><br>
+    <%= f_user.password_field :password, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f_user.label :password_confirmation %><br>
+    <%= f_user.password_field :password_confirmation, class: "form-control"  %>
+  </div>
+
+  <%= render partial: 'student_form', locals: { f: f_user } %>
+
+  <div class="actions">
+    <%= f_user.submit  class: 'btn btn-default' %>
+  </div>
+
+<% end %>
+
+
+<%= link_to 'Back', @user, {class: 'btn btn-default'} %>
 <%# link_to 'Back', users_path %>

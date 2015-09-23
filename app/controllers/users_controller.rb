@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
   end
 
   # POST /users
@@ -46,6 +47,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    puts @user.student
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -80,6 +83,7 @@ class UsersController < ApplicationController
         :password, 
         :password_confirmation, 
         student_attributes: [
+          :id,
           :first_name, 
           :last_name, 
           :grade, 
@@ -87,6 +91,7 @@ class UsersController < ApplicationController
           :cell_phone_number, 
           :email,
           address_attributes: [
+            :id,
             :street,
             :city,
             :state,

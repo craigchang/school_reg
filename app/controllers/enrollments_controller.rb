@@ -1,12 +1,10 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
 
-
-
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @enrollments = Student.find(session[:user_id]).enrollments
     @courses = Course.all
   end
 
@@ -29,17 +27,16 @@ class EnrollmentsController < ApplicationController
   def create
     course = Course.find(params[:course_id])
     student = Student.find_by(user_id: session[:user_id])
-    enrollment = Enrollment.find_by(course_id: course.id)
+    enrollment = Enrollment.find_by(course_id: course.id, student_id: student.id)
 
     if enrollment.nil?
-      puts "creating enrollment"
-      enrollment = student.enrollments.build(course_id: course.id)
+      enrollment = student.enrollments.build(course_id: course.id)      
     end
 
     respond_to do |format|
       if enrollment.save
-        @enrollments = Enrollment.all
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        @enrollments = Student.find_by(user_id: session[:user_id]).enrollments
+        #format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
         format.js { enrollments = @enrollments }
         format.json { render :show, status: :created, location: @enrollment }
       else
@@ -81,6 +78,6 @@ class EnrollmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
-      params.require(:enrollments).permit(:course_id)
+      params[:course_id]
     end
 end

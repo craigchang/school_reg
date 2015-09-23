@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  category: category1
+  name: name1
+  is_submitted: "1"
+  grade: A+
+  score: 100
+  max_score: 100
+
+two:
+  id: 2
+  category: category2
+  name: name2
+  is_submitted: "0"
+  grade: A
+  score: 95
+  max_score: 100

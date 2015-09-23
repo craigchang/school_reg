@@ -1,9 +1,86 @@
 <p id="notice"><%= notice %></p>
 
+<h3>User Information</h3>
+
 <p>
-  <strong>Name:</strong>
+  <strong>Username:</strong>
   <%= @user.name %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%# link_to 'Back', users_path %>
+<p>
+  <strong>First Name:</strong>
+  <%= @user.student.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.student.last_name %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @user.student.grade %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.student.email %>
+</p>
+
+<p>
+  <strong>Home phone number:</strong>
+  <%= @user.student.home_phone_number %>
+</p>
+
+<p>
+  <strong>Cell phone number:</strong>
+  <%= @user.student.cell_phone_number %>
+</p>
+
+<h3>Parent Information</h3>
+
+<% @user.student.parents.each do |parent| %>
+	<p>
+	  <strong>First Name</strong>
+	  <%= parent.first_name %>
+	</p>
+
+	<p>
+	  <strong>Last Name</strong>
+	  <%= parent.last_name %>
+	</p>
+
+	<p>
+	  <strong>Occupation</strong>
+	  <%= parent.occupation %>
+	</p>
+
+<% end %>
+
+<h3>Address Information</h3>
+
+<% if !@user.student.address.nil? %>
+  <p>
+    <strong>Street</strong>
+    <%= @user.student.address.street %>
+  </p>
+
+  <p>
+    <strong>City</strong>
+    <%= @user.student.address.city %>
+  </p>
+
+  <p>
+    <strong>State</strong>
+    <%= @user.student.address.state %>
+  </p>
+
+  <p>
+    <strong>zip</strong>
+    <%= @user.student.address.zip %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user), {class: 'btn btn-default'} %>
+
+<%= link_to 'Back', dashboard_url, {class: 'btn btn-default'} %>

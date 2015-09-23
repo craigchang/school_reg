@@ -1,21 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: user_id1
-  address_id: address_id1
-  first_name: MyString
-  last_name: MyString
-  grade: MyString
-  home_phone_number: MyString
-  cell_phone_number: MyString
-  email: MyString
+  id: 1
+  user_id: 1
+  address_id: 1
+  first_name: MyString1
+  last_name: MyString1
+  grade: MyString1
+  home_phone_number: MyString1
+  cell_phone_number: MyString1
+  email: MyString1
 
 two:
-  user_id: user_id2
-  address_id: address_id2
-  first_name: MyString
-  last_name: MyString
-  grade: MyString
-  home_phone_number: MyString
-  cell_phone_number: MyString
-  email: MyString
+  id: 2
+  user_id: 2
+  address_id: 2
+  first_name: MyString2
+  last_name: MyString2
+  grade: MyString2
+  home_phone_number: MyString2
+  cell_phone_number: MyString2
+  email: MyString2

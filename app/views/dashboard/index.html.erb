@@ -2,22 +2,38 @@
 
 <p>Welcome!</p>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="1">Course Number</th>
-      <th colspan="1">Course Name</th>
-      <th colspan="1">Final Grade</th>
-    </tr>
-  </thead>
+<% if @enrollments.length > 0 %>
 
-  <tbody>
-    <% @enrollments.each do |enrollment| %>
+<h2>Courses Enrolled</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= enrollment.course.course_number %></td>
-        <td><%= enrollment.course.name %></td>
-        <td><%= enrollment.grade.nil? ? "In progress" : enrollment.grade %></td>
+        <th colspan="1">Course Number</th>
+        <th colspan="1">Course Name</th>
+        <th colspan="1">Current Grade</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @enrollments.each do |enrollment| %>
+        <tr>
+          <td><%= enrollment.course.course_number %></td>
+          <td><%= enrollment.course.name %></td>
+          <td><%= enrollment.total_percentage.to_s + '%' %></td>
+          <td><%= link_to 'View Tasks', tasks_path(enrollment_id: enrollment.id), method: :get %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% else %>
+
+<div>
+  <p>Register your classes now!</p>
+</div>
+
+<% end%>

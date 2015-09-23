@@ -3,6 +3,8 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
+    @student = students(:one)
+    @address = addresses(:one)
   end
 
   test "should get index" do
@@ -26,6 +28,8 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should show user" do
+    @user.student = @student
+    @user.student.address = @address
     get :show, id: @user
     assert_response :success
   end

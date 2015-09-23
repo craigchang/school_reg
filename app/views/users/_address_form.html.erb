@@ -2,21 +2,21 @@
 
 <%= f.fields_for :address do |f_address| %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f_address.label :street %><br>
-    <%= f_address.text_field :street %>
+    <%= f_address.text_field :street, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f_address.label :city %><br>
-    <%= f_address.text_field :city %>
+    <%= f_address.text_field :city, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f_address.label :state %><br>
-    <%= f_address.text_field :state %>
+    <%= f_address.text_field :state, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f_address.label :zip %><br>
-    <%= f_address.text_field :zip %>
+    <%= f_address.text_field :zip, class: "form-control" %>
   </div>
 
 <% end %>

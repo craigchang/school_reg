@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Grade</strong>
+  <%= @enrollment.grade.nil? ? "In progress" : @enrollment.grade %>
+</p>
+
 <%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
 <%= link_to 'Back', enrollments_path %>

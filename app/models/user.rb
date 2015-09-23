@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_one :student
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { minimum: 4 }
   
   accepts_nested_attributes_for :student
 

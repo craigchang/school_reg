@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920210421) do
+ActiveRecord::Schema.define(version: 20150921053028) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -76,6 +76,20 @@ ActiveRecord::Schema.define(version: 20150920210421) do
 
   add_index "students", ["address_id"], name: "index_students_on_address_id"
   add_index "students", ["user_id"], name: "index_students_on_user_id"
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "enrollment_id"
+    t.string   "category"
+    t.string   "name"
+    t.boolean  "is_submitted"
+    t.string   "grade"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "score"
+    t.integer  "max_score"
+  end
+
+  add_index "tasks", ["enrollment_id"], name: "index_tasks_on_enrollment_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

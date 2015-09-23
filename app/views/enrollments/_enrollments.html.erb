@@ -1,26 +1,29 @@
 <h2>Currently Enrolled</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="1">Course Number</th>
-      <th colspan="1">Course Name</th>
-      <th colspan="1"></th>
-      <th colspan="1"></th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @enrollments.each do |enrollment| %>
+<div class="table-responsive">
+    <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= enrollment.course.course_number %></td>
-        <td><%= enrollment.course.name %></td>
-        <td><%# link_to 'Show', enrollment %></td>
-        <td><%# link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-        <td><%= button_to 'Remove Course', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="1">Course Number</th>
+        <th colspan="1">Course Name</th>
+        <th colspan="1">Final Grade</th>
+        <th colspan="1"></th>
+        <th colspan="1"></th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @enrollments.each do |enrollment| %>
+        <tr>
+          <td><%= enrollment.course.course_number %></td>
+          <td><%= enrollment.course.name %></td>
+          <td><%= enrollment.grade.nil? ? "In progress" : enrollment.grade %></td>
+          <td><%# link_to 'Show', enrollment %></td>
+          <td><%# link_to 'Edit', edit_enrollment_path(enrollment) %></td>
+          <td><%= button_to 'Remove Course', enrollment, class: 'btn btn-default',method: :delete, data: { confirm: 'Are you sure? Removing this course from your enrollment will also delete the associated tasks.' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
