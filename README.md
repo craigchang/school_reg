@@ -1,3 +1,3 @@
 # school_reg
 
-Test
+Simple School Registration app using Ruby and Ruby on Rails
